@@ -8,5 +8,9 @@
         {
             this.connectionString = connectionString;
         }
+        public void Open()
+        {
+            System.Console.WriteLine(connectionString);
+        }
     }
 }

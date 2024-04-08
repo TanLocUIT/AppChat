@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data.SQLite;
 
 namespace Lab1_WeChat
 {
@@ -29,6 +30,7 @@ namespace Lab1_WeChat
             label6.BackColor = Color.Transparent;
             label7.BackColor = Color.Transparent;
             label8.BackColor = Color.Transparent;
+            label9.BackColor = Color.Transparent;
             panel5.BackColor = Color.Transparent;
             textBox2.PasswordChar = '*';
         }
@@ -89,6 +91,34 @@ namespace Lab1_WeChat
         {
             // Thực hiện kiểm tra thông tin đăng nhập, ví dụ kiểm tra với tài khoản mặc định
             return (username == "NguyenTanLoc" && password == "20521548");
+        }
+
+        private void label9_Click(object sender, EventArgs e)
+        {
+
+            if (textBox1.Text.Trim() =="" && textBox2.Text.Trim() == "")
+            {
+
+                MessageBox.Show("Dang Nhap That Bai");
+            }
+            else
+            {
+                string query = "SELECT * FROM people WHERE username= @user AND password = @pass";
+                SQLiteConnection conn = new SQLiteConnection("Data Source=SQLiteData.db;Version=3;");
+                conn.Open();
+                
+                SQLiteCommand cmd = new SQLiteCommand(query);
+                cmd.Parameters.AddWithValue("@user", textBox1.Text);
+                cmd.Parameters.AddWithValue("@password", textBox2.Text);
+                DataTable dt = new DataTable();
+                SQLiteDataAdapter da = new SQLiteDataAdapter(cmd);
+                da.Fill(dt);
+                
+                if (dt.Rows.Count > 0)
+                {
+                    MessageBox.Show("Dang Nhap Thanh Cong");
+                }
+            }
         }
     }
 }
