@@ -29,7 +29,7 @@ namespace Lab1_WeChat
             label5.BackColor = Color.Transparent;
             label6.BackColor = Color.Transparent;
             label7.BackColor = Color.Transparent;
-            label8.BackColor = Color.Transparent;
+            //label8.BackColor = Color.Transparent;
             label9.BackColor = Color.Transparent;
             panel5.BackColor = Color.Transparent;
             textBox2.PasswordChar = '*';
@@ -37,7 +37,7 @@ namespace Lab1_WeChat
 
         private void label1_Click(object sender, EventArgs e)
         {
-            
+
         }
 
         private void label4_Click(object sender, EventArgs e)
@@ -55,17 +55,7 @@ namespace Lab1_WeChat
 
         }
 
-        private void label6_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label7_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label8_Click(object sender, EventArgs e)
+        /*private void label8_Click(object sender, EventArgs e)
         {
             string username = textBox1.Text;
             string password = textBox2.Text;
@@ -91,32 +81,44 @@ namespace Lab1_WeChat
         {
             // Thực hiện kiểm tra thông tin đăng nhập, ví dụ kiểm tra với tài khoản mặc định
             return (username == "NguyenTanLoc" && password == "20521548");
-        }
+        }*/
 
         private void label9_Click(object sender, EventArgs e)
         {
 
-            if (textBox1.Text.Trim() =="" && textBox2.Text.Trim() == "")
+            if (textBox1.Text.Trim() == "" && textBox2.Text.Trim() == "")
             {
-
-                MessageBox.Show("Dang Nhap That Bai");
+                MessageBox.Show("Vui lòng nhập thông tin đăng nhập!");
             }
             else
             {
                 string query = "SELECT * FROM people WHERE username= @user AND password = @pass";
-                SQLiteConnection conn = new SQLiteConnection("Data Source=SQLiteData.db;Version=3;");
-                conn.Open();
-                
-                SQLiteCommand cmd = new SQLiteCommand(query);
-                cmd.Parameters.AddWithValue("@user", textBox1.Text);
-                cmd.Parameters.AddWithValue("@password", textBox2.Text);
-                DataTable dt = new DataTable();
-                SQLiteDataAdapter da = new SQLiteDataAdapter(cmd);
-                da.Fill(dt);
-                
-                if (dt.Rows.Count > 0)
+                string connectionString = "Data Source=SQLiteData.db;Version=3;";
+
+                using (SQLiteConnection conn = new SQLiteConnection(connectionString))
                 {
-                    MessageBox.Show("Dang Nhap Thanh Cong");
+                    conn.Open();
+                    SQLiteCommand cmd = new SQLiteCommand(query, conn);
+                    cmd.Parameters.AddWithValue("@user", textBox1.Text);
+                    cmd.Parameters.AddWithValue("@pass", textBox2.Text);
+
+                    DataTable dt = new DataTable();
+                    SQLiteDataAdapter da = new SQLiteDataAdapter(cmd);
+                    da.Fill(dt);
+
+                    if (dt.Rows.Count > 0)
+                    {
+                        MessageBox.Show("Đăng nhập thành công!");
+                        // Chuyển hướng đến form chính hoặc form khác
+                        MainChat mainForm = new MainChat();
+                        mainForm.Show();
+                        this.Hide(); // Ẩn form đăng nhập
+
+                    }
+                    else
+                    {
+                        MessageBox.Show("Tên người dùng hoặc mật khẩu không chính xác!");
+                    }
                 }
             }
         }

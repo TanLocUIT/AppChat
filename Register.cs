@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
+using System.Data.SQLite;
 
 namespace Lab1_WeChat
 {
@@ -25,6 +26,7 @@ namespace Lab1_WeChat
             label3.BackColor = Color.Transparent;
             label4.BackColor = Color.Transparent;
             label5.BackColor = Color.Transparent;
+            panel4.BackColor = Color.Transparent;
             textBox2.PasswordChar = '*';
         }
         private void CheckData()
@@ -90,23 +92,10 @@ namespace Lab1_WeChat
         private bool IsValidEmail(string email)
         {
             // Kiểm tra định dạng email sử dụng Regular Expression
-            // Đây chỉ là một ví dụ đơn giản, bạn có thể sử dụng mẫu Regular Expression phức tạp hơn để kiểm tra định dạng email
             string pattern = @"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$";
             return System.Text.RegularExpressions.Regex.IsMatch(email, pattern);
         }
 
-
-        /*private void panel4_Paint(object sender, PaintEventArgs e)
-        {
-            // Lấy đối tượng Graphics từ sự kiện Paint
-            Graphics g = e.Graphics;
-
-            // Lấy kích thước của Panel
-            int diameter = Math.Min(((Panel)sender).Width, ((Panel)sender).Height);
-
-            // Vẽ một hình tròn bên trong Panel
-            g.FillEllipse(Brushes.Red, 0, 0, diameter, diameter);
-        }*/
         private void textBox1_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
@@ -117,8 +106,12 @@ namespace Lab1_WeChat
 
         private void label9_Click(object sender, EventArgs e)
         {
-            
-            this.Hide(); // Ẩn form đăng ky
+            string username = textBox1.Text;
+            string password = textBox2.Text;
+            string email = textBox3.Text;
+
+            SaveUserInformation(username, password, email);
+            this.Hide(); 
         }
 
         private void pannel4_MouseClick(object sender, MouseEventArgs e)
@@ -143,5 +136,33 @@ namespace Lab1_WeChat
                 ((Panel)sender).Controls.Add(pictureBox);
             }
         }
+        private void SaveUserInformation(string username, string password, string email)
+        {
+            try
+            {
+                string connectionString = "Data Source=SQLiteData.db;Version=3;";
+                string query = "INSERT INTO people (username, password, email) VALUES (@username, @password, @email)";
+
+                using (SQLiteConnection conn = new SQLiteConnection(connectionString))
+                {
+                    conn.Open();
+
+                    using (SQLiteCommand cmd = new SQLiteCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@username", username);
+                        cmd.Parameters.AddWithValue("@password", password);
+                        cmd.Parameters.AddWithValue("@email", email);
+                        cmd.ExecuteNonQuery();
+                    }
+
+                    MessageBox.Show("Thông tin người dùng đã được lưu thành công.");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Đã xảy ra lỗi: " + ex.Message);
+            }
+        }
+
     }
 }

@@ -162,9 +162,9 @@ namespace Lab1_WeChat
             // 
             this.panel4.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel4.BackgroundImage")));
             this.panel4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.panel4.Location = new System.Drawing.Point(139, 30);
+            this.panel4.Location = new System.Drawing.Point(116, 12);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(100, 100);
+            this.panel4.Size = new System.Drawing.Size(135, 138);
             this.panel4.TabIndex = 26;
             this.panel4.MouseClick += new System.Windows.Forms.MouseEventHandler(this.pannel4_MouseClick);
             // 
@@ -172,14 +172,14 @@ namespace Lab1_WeChat
             // 
             this.label9.AutoSize = true;
             this.label9.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label9.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Font = new System.Drawing.Font("Arial", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.ForeColor = System.Drawing.Color.Plum;
             this.label9.Image = ((System.Drawing.Image)(resources.GetObject("label9.Image")));
-            this.label9.Location = new System.Drawing.Point(553, 408);
+            this.label9.Location = new System.Drawing.Point(543, 408);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(63, 26);
+            this.label9.Size = new System.Drawing.Size(97, 26);
             this.label9.TabIndex = 27;
-            this.label9.Text = "Enter";
+            this.label9.Text = "Hoàn Tất";
             this.label9.Click += new System.EventHandler(this.label9_Click);
             // 
             // Register

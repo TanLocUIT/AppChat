@@ -15,9 +15,6 @@ C:\Users\tanlo\source\repos\Lab1-WeChat\bin\Debug\System.Data.SQLite.Linq.dll
 C:\Users\tanlo\source\repos\Lab1-WeChat\bin\Debug\SQLiteData.sqbpro
 C:\Users\tanlo\source\repos\Lab1-WeChat\bin\Debug\System.Data.SQLite.dll
 C:\Users\tanlo\source\repos\Lab1-WeChat\bin\Debug\System.Data.SQLite.pdb
-C:\Users\tanlo\source\repos\Lab1-WeChat\bin\Debug\System.Data.SQLite.dll.config
 C:\Users\tanlo\source\repos\Lab1-WeChat\obj\Debug\Lab1_WeChat.ThongTinTaiKhoan.resources
 C:\Users\tanlo\source\repos\Lab1-WeChat\obj\Debug\Lab1-WeChat.csproj.CopyComplete
-C:\Users\tanlo\source\repos\Lab1-WeChat\bin\Debug\EntityFramework.dll
-C:\Users\tanlo\source\repos\Lab1-WeChat\bin\Debug\System.Data.SQLite.EF6.dll
-C:\Users\tanlo\source\repos\Lab1-WeChat\bin\Debug\System.Data.SQLite.EF6.pdb
+C:\Users\tanlo\source\repos\Lab1-WeChat\bin\Debug\System.Data.SQLite.xml
