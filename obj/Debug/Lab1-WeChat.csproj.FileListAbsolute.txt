@@ -1,0 +1,11 @@
+C:\Users\tanlo\source\repos\Lab1-WeChat\bin\Debug\Lab1-WeChat.exe.config
+C:\Users\tanlo\source\repos\Lab1-WeChat\bin\Debug\Lab1-WeChat.exe
+C:\Users\tanlo\source\repos\Lab1-WeChat\bin\Debug\Lab1-WeChat.pdb
+C:\Users\tanlo\source\repos\Lab1-WeChat\obj\Debug\Lab1_WeChat.Login.resources
+C:\Users\tanlo\source\repos\Lab1-WeChat\obj\Debug\Lab1_WeChat.Properties.Resources.resources
+C:\Users\tanlo\source\repos\Lab1-WeChat\obj\Debug\Lab1-WeChat.csproj.GenerateResource.cache
+C:\Users\tanlo\source\repos\Lab1-WeChat\obj\Debug\Lab1-WeChat.csproj.CoreCompileInputs.cache
+C:\Users\tanlo\source\repos\Lab1-WeChat\obj\Debug\Lab1-WeChat.exe
+C:\Users\tanlo\source\repos\Lab1-WeChat\obj\Debug\Lab1-WeChat.pdb
+C:\Users\tanlo\source\repos\Lab1-WeChat\obj\Debug\Lab1_WeChat.Register.resources
+C:\Users\tanlo\source\repos\Lab1-WeChat\obj\Debug\Lab1-WeChat.csproj.AssemblyReference.cache
