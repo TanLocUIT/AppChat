@@ -95,20 +95,52 @@ namespace Lab1_WeChat
             return System.Text.RegularExpressions.Regex.IsMatch(email, pattern);
         }
 
-        private void panel2_Paint(object sender, PaintEventArgs e)
+
+        /*private void panel4_Paint(object sender, PaintEventArgs e)
         {
+            // Lấy đối tượng Graphics từ sự kiện Paint
+            Graphics g = e.Graphics;
 
-        }
+            // Lấy kích thước của Panel
+            int diameter = Math.Min(((Panel)sender).Width, ((Panel)sender).Height);
 
-        private void panel4_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
+            // Vẽ một hình tròn bên trong Panel
+            g.FillEllipse(Brushes.Red, 0, 0, diameter, diameter);
+        }*/
         private void textBox1_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
                 CheckData();
+            }
+        }
+
+        private void label9_Click(object sender, EventArgs e)
+        {
+            
+            this.Hide(); // Ẩn form đăng ky
+        }
+
+        private void pannel4_MouseClick(object sender, MouseEventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Filter = "Image Files (*.bmp; *.jpg; *.png; *.gif)|*.bmp;*.jpg;*.png;*.gif";
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                // Lấy đường dẫn của hình ảnh đã chọn
+                string imagePath = openFileDialog.FileName;
+
+                // Hiển thị hình ảnh trong PictureBox
+                PictureBox pictureBox = new PictureBox();
+                pictureBox.Size = ((Panel)sender).Size; // Đảm bảo PictureBox có cùng kích thước với Panel
+                pictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
+                pictureBox.Image = Image.FromFile(imagePath);
+
+                // Xóa tất cả các controls hiện có trong Panel trước khi thêm PictureBox mới
+                ((Panel)sender).Controls.Clear();
+
+                // Thêm PictureBox mới vào Panel
+                ((Panel)sender).Controls.Add(pictureBox);
             }
         }
     }

@@ -41,6 +41,8 @@ namespace Lab1_WeChat
             this.label1 = new System.Windows.Forms.Label();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.label9 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // panel3
@@ -62,7 +64,6 @@ namespace Lab1_WeChat
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(30, 30);
             this.panel2.TabIndex = 23;
-            this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
             // 
             // panel1
             // 
@@ -157,6 +158,30 @@ namespace Lab1_WeChat
             this.label5.TabIndex = 24;
             this.label5.Text = "Email";
             // 
+            // panel4
+            // 
+            this.panel4.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel4.BackgroundImage")));
+            this.panel4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.panel4.Location = new System.Drawing.Point(139, 30);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(100, 100);
+            this.panel4.TabIndex = 26;
+            this.panel4.MouseClick += new System.Windows.Forms.MouseEventHandler(this.pannel4_MouseClick);
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label9.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.ForeColor = System.Drawing.Color.Plum;
+            this.label9.Image = ((System.Drawing.Image)(resources.GetObject("label9.Image")));
+            this.label9.Location = new System.Drawing.Point(553, 408);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(63, 26);
+            this.label9.TabIndex = 27;
+            this.label9.Text = "Enter";
+            this.label9.Click += new System.EventHandler(this.label9_Click);
+            // 
             // Register
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -164,6 +189,8 @@ namespace Lab1_WeChat
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.panel4);
             this.Controls.Add(this.textBox3);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.panel3);
@@ -177,6 +204,7 @@ namespace Lab1_WeChat
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "Register";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "We Chat - Đăng ký";
             this.Load += new System.EventHandler(this.Register_Load);
             this.ResumeLayout(false);
@@ -196,5 +224,7 @@ namespace Lab1_WeChat
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.Label label9;
     }
 }

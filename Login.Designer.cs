@@ -250,6 +250,7 @@ namespace Lab1_WeChat
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "Login";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.panel3.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
