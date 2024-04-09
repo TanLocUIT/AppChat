@@ -168,5 +168,58 @@ namespace Lab1_WeChat
                 MessageBox.Show("Đã xảy ra lỗi khi gửi email: " + ex.Message);
             }
         }
+
+        private void label6_Click(object sender, EventArgs e)
+        {
+            string username = textBox1.Text;
+            string password = textBox2.Text;
+
+            try
+            {
+                string connectionString = "Data Source=SQLiteData.db;Version=3;";
+                string query = "SELECT password, email FROM people WHERE username=@username";
+
+                using (SQLiteConnection conn = new SQLiteConnection(connectionString))
+                {
+                    conn.Open();
+
+                    using (SQLiteCommand cmd = new SQLiteCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@username", username);
+
+                        using (SQLiteDataAdapter da = new SQLiteDataAdapter(cmd))
+                        {
+                            DataTable dt = new DataTable();
+                            da.Fill(dt);
+
+                            if (dt.Rows.Count > 0)
+                            {
+                                string savedPassword = dt.Rows[0]["password"].ToString();
+                                string email = dt.Rows[0]["email"].ToString();
+
+                                if (password == savedPassword)
+                                {
+                                    MessageBox.Show("Đăng nhập thành công.");
+                                }
+                                else
+                                {
+                                
+                                    // Gọi phương thức SendPasswordByEmail để gửi lại mật khẩu qua email
+                                    SendPasswordByEmail(username, savedPassword, email);
+                                }
+                            }
+                            else
+                            {
+                                MessageBox.Show("Tên người dùng không tồn tại.");
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Đã xảy ra lỗi: " + ex.Message);
+            }
+        }
     }
 }

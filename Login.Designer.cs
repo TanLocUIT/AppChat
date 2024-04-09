@@ -134,6 +134,7 @@ namespace Lab1_WeChat
             this.label6.Size = new System.Drawing.Size(123, 20);
             this.label6.TabIndex = 7;
             this.label6.Text = "Quên mật khẩu";
+            this.label6.Click += new System.EventHandler(this.label6_Click);
             // 
             // label7
             // 
