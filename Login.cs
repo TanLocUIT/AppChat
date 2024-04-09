@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SQLite;
+using System.Net;
+using System.Net.Mail;
 
 namespace Lab1_WeChat
 {
@@ -30,7 +32,7 @@ namespace Lab1_WeChat
             label6.BackColor = Color.Transparent;
             label7.BackColor = Color.Transparent;
             //label8.BackColor = Color.Transparent;
-            label9.BackColor = Color.Transparent;
+            labelLogin.BackColor = Color.Transparent;
             panel5.BackColor = Color.Transparent;
             textBox2.PasswordChar = '*';
         }
@@ -83,16 +85,16 @@ namespace Lab1_WeChat
             return (username == "NguyenTanLoc" && password == "20521548");
         }*/
 
-        private void label9_Click(object sender, EventArgs e)
+        private void labelLogin_Click(object sender, EventArgs e)
         {
-
+            string username = textBox1.Text;
             if (textBox1.Text.Trim() == "" && textBox2.Text.Trim() == "")
             {
                 MessageBox.Show("Vui lòng nhập thông tin đăng nhập!");
             }
             else
             {
-                string query = "SELECT * FROM people WHERE username= @user AND password = @pass";
+                string query = "SELECT * FROM people WHERE username= @user ";
                 string connectionString = "Data Source=SQLiteData.db;Version=3;";
 
                 using (SQLiteConnection conn = new SQLiteConnection(connectionString))
@@ -103,23 +105,67 @@ namespace Lab1_WeChat
                     cmd.Parameters.AddWithValue("@pass", textBox2.Text);
 
                     DataTable dt = new DataTable();
+                    cmd.Parameters.AddWithValue("@username", username);
                     SQLiteDataAdapter da = new SQLiteDataAdapter(cmd);
                     da.Fill(dt);
 
                     if (dt.Rows.Count > 0)
                     {
-                        MessageBox.Show("Đăng nhập thành công!");
-                        // Chuyển hướng đến form chính hoặc form khác
-                        MainChat mainForm = new MainChat();
-                        mainForm.Show();
-                        this.Hide(); // Ẩn form đăng nhập
-
+                        string password = textBox2.Text;
+                        string savedPassword = dt.Rows[0]["password"].ToString();
+                        string email = dt.Rows[0]["email"].ToString();
+                        // Kiểm tra mật khẩu
+                        if (password == savedPassword)
+                        {
+                            MessageBox.Show("Đăng nhập thành công.");
+                            // Chuyển hướng đến form chính hoặc form khác
+                            MainChat mainForm = new MainChat();
+                            mainForm.Show();
+                            this.Hide(); // Ẩn form đăng nhập
+                        }
+                        else
+                        {
+                            MessageBox.Show("Mật khẩu không chính xác.");
+                            SendPasswordByEmail(username, savedPassword, email);
+                        }
                     }
+                   
                     else
                     {
                         MessageBox.Show("Tên người dùng hoặc mật khẩu không chính xác!");
                     }
                 }
+            }
+        }
+        private void SendPasswordByEmail(string username, string password, string email)
+        {
+            try
+            {
+                // Thiết lập thông tin email
+                string senderEmail = "nguyentanlockbang12345@gmail.com"; // Địa chỉ email của người gửi
+                string senderPassword = "07032002826562"; // Mật khẩu email của người gửi
+                //string subject = "Password Recovery"; // Tiêu đề email
+                string body = $"Your password is: {password}"; // Nội dung email
+
+                // Tạo đối tượng MailMessage
+                MailMessage mail = new MailMessage(senderEmail, email);
+                mail.Subject = "Password Recovery"; // Tiêu đề email
+                mail.Body = $"Your password is: {password}"; // Nội dung email
+
+                // Tạo đối tượng SmtpClient và thiết lập thông tin SMTP
+                SmtpClient smtpClient = new SmtpClient("smtp.gmail.com");
+                smtpClient.Port = 587;
+                smtpClient.Credentials = new NetworkCredential(senderEmail, senderPassword);
+                smtpClient.EnableSsl = true;
+
+                // Gửi email
+                smtpClient.Send(mail);
+
+                MessageBox.Show("Mật khẩu đã được gửi lại qua email.");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Đã xảy ra lỗi khi gửi email: " + ex.Message);
             }
         }
     }

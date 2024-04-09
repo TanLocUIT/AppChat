@@ -44,7 +44,7 @@ namespace Lab1_WeChat
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
-            this.label9 = new System.Windows.Forms.Label();
+            this.labelLogin = new System.Windows.Forms.Label();
             this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -196,17 +196,17 @@ namespace Lab1_WeChat
             this.panel5.Size = new System.Drawing.Size(83, 81);
             this.panel5.TabIndex = 11;
             // 
-            // label9
+            // labelLogin
             // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Arial", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.ForeColor = System.Drawing.Color.MediumSpringGreen;
-            this.label9.Location = new System.Drawing.Point(554, 247);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(112, 24);
-            this.label9.TabIndex = 13;
-            this.label9.Text = "Đăng nhập";
-            this.label9.Click += new System.EventHandler(this.label9_Click);
+            this.labelLogin.AutoSize = true;
+            this.labelLogin.Font = new System.Drawing.Font("Arial", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelLogin.ForeColor = System.Drawing.Color.MediumSpringGreen;
+            this.labelLogin.Location = new System.Drawing.Point(554, 247);
+            this.labelLogin.Name = "labelLogin";
+            this.labelLogin.Size = new System.Drawing.Size(112, 24);
+            this.labelLogin.TabIndex = 13;
+            this.labelLogin.Text = "Đăng nhập";
+            this.labelLogin.Click += new System.EventHandler(this.labelLogin_Click);
             // 
             // Login
             // 
@@ -216,7 +216,7 @@ namespace Lab1_WeChat
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.ControlBox = false;
-            this.Controls.Add(this.label9);
+            this.Controls.Add(this.labelLogin);
             this.Controls.Add(this.panel5);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
@@ -254,7 +254,7 @@ namespace Lab1_WeChat
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Panel panel5;
-        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label labelLogin;
     }
 }
 
